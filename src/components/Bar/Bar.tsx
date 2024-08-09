@@ -18,7 +18,7 @@ const Bar = () => {
   const { isPlaying, setIsPlaying } = usePlayerState();
   const [volume, setVolume] = useState<number>(0.5);
   const [isLoop, setIsLoop] = useState<boolean>(false);
-  const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0);
+  const [currentTrackIndex] = useState<number>(0);
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -81,7 +81,7 @@ const Bar = () => {
     return null;
   }
 
-  const { author, album } = currentTrack;
+  const { author, album, _id } = currentTrack;
   console.log(currentTrack);
 
   return (
@@ -110,7 +110,7 @@ const Bar = () => {
               isLoop={isLoop}
               toggleLoop={toggleLoop}
             />
-            <TrackPlay author={author} album={album} />
+            <TrackPlay author={author} album={album} id={_id} />
           </div>
           <Volume
             step={0.01}
